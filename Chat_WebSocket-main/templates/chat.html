@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+<body>
+    <p id="usuarioPantalla" style="display:none;">{{ usuario }}</p>
+    <p id="salaPantalla" style="display:none;">{{ sala }}</p>
+    <div class="contenedor-principal">
+        
+        <div class="area-video">
+            <div id="gridUsuarios" class="grid-usuarios">
+                </div>
+            
+            <div class="controles-llamada">
+                <button class="btn-control bloqueo" id="btnMic">🎤</button>
+                <button class="btn-control bloqueo" id="btnCam">📷</button>
+            </div>
+        </div>
+
+        <div class="contenedorChat">
+            <header>
+                <h1>Chat</h1>
+                <a href="{{url_for('index')}}" class="salir">Salir</a>
+            </header>
+
+            <div class="chatDeMensajes" id="chatDeMensajes">
+                </div>
+
+            <form id="mensajesForm" class="entradaMensajesForm">
+                <div class="input-wrapper">
+                    <div id="menuAdjunto" class="menu-desplegable oculto">
+                        <div id="vistaOpciones">
+                            <button type="button" id="btnFoto" class="opcion-menu"><span>📷</span> Foto</button>
+                            <button type="button" id="btnEmojis" class="opcion-menu"><span>😊</span> Emojis</button>
+                        </div>
+                        <div id="vistaEmojis" class="emoji-container oculto"></div>
+                    </div>
+                    <input type="text" id="mensajeInput" placeholder="Escribe algo..." autocomplete="off" autofocus>
+                    <button type="button" id="btnMas" class="boton-mas">+</button>
+                </div>
+                <input type="file" id="inputArchivo" accept="image/*" style="display: none;">
+                <button type="submit">➤</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
